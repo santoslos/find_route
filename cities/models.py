@@ -14,10 +14,10 @@ class City(models.Model):
         ordering = ['name']
 
     def get_absolute_url(self):
-        return reverse('cities:detail', kwargs={'pk': self.pk})
+        return reverse('cities:detail', kwargs={'pk_city': self.pk})
 
     def get_absolute_url_update(self):
-        return reverse('cities:update', kwargs={'pk': self.pk})
+        return reverse('cities:update', kwargs={'pk_city': self.pk})
 
     def get_absolute_url_delete(self):
-        return reverse('cities:delete', kwargs={'pk': self.pk})
+        return reverse('cities:delete', kwargs={'pk_city': self.pk})

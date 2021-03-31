@@ -2,7 +2,7 @@
 {%block title%}Удаление города{%endblock%}
 {% block content %}
 <h1> Удаление города:</h1>
-<p>{{object}}</p>
+<p><a href="{{object.get_absolute_url}}"> {{object.name}}</a></p>
 {% include 'form.html' with button="Удалить" %}
 
 {%endblock%}

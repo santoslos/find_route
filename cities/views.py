@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, DeleteView, UpdateView, ListView
@@ -22,7 +23,10 @@ def home(request, pk=None):
             form.save()
     form = CityForm()
     qs = City.objects.all()
-    context = {'objects_list': qs, 'form': form}
+    lst = Paginator(qs, 2)
+    page_number = request.GET.get('page')
+    page_obj = lst.get_page(page_number)
+    context = {'page_obj': page_obj, 'form': form}
     return render(request, 'cities/home.html', context)
 
 
@@ -33,11 +37,13 @@ def test(request):
 class CityDetailView(DetailView):
     queryset = City.objects.all()
     template_name = 'cities/detail.html'
+    pk_url_kwarg = 'pk_city'
 
 
 class CityListView(ListView):
     queryset = City.objects.all()
     template_name = 'cities/list.html'
+    paginate_by = 2
 
 
 class CityCreateView(CreateView):
@@ -52,9 +58,11 @@ class CityUpdateView(UpdateView):
     form_class = CityForm
     template_name = 'cities/update.html'
     success_url = reverse_lazy('cities:home')
+    pk_url_kwarg = 'pk_city'
 
 
 class CityDeleteView(DeleteView):
     model = City
     template_name = 'cities/delete.html'
     success_url = reverse_lazy('cities:home')
+    pk_url_kwarg = 'pk_city'
