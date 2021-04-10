@@ -2,7 +2,6 @@ from django.contrib import admin
 
 from django.urls import path
 from trains.views import *
-
 urlpatterns = [
     path('', home, name='home'),
     path('list', TrainListView.as_view(), name='list'),

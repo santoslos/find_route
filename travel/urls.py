@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from cities.views import test
+from routes.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cities/', include(('cities.urls', 'cities'))),
-    path('', test, name='test'),
+    path('', home, name='home'),
     path('trains/', include(('trains.urls', 'trains'))),
 ]
