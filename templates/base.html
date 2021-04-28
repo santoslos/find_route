@@ -2,6 +2,8 @@
 {% url 'trains:home' as trains_home_url%}
 {% url 'cities:create' as cities_create_url%}
 {% url 'trains:create' as trains_create_url%}
+{% url 'list' as route_list%}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,7 +22,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand " href="">FindRouter</a>
+            <a class="navbar-brand " href="{% url 'home'%}">FindRouter</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,7 +42,9 @@
                         {% endif %}" href="{% url 'trains:home' %}">Поезда</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link {% if request.path == route_list %}
+                        	active
+                        {% endif %} " href="{% url 'list'%}">Маршуты</a>
                     </li>
 
 
@@ -75,7 +79,7 @@
                 {%else%}
                 <div class="alert alert-success alert-dismissible fade show " role="alert">
                     {{ message }}
-                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                     </button>
                 </div>
                 {% endif %}
@@ -107,6 +111,7 @@
     $('.js-example-basic-single').select2();
     $('.js-example-basic-multiple').select2();
 });
+
 
 
 
