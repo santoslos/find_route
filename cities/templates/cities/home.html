@@ -10,6 +10,7 @@
                 <td>
                     <a href="{{object.get_absolute_url}}"> {{object.name}}</a>
                 </td>
+                 {% if user.is_authenticated %}
                 <td>
                     <a href="{{object.get_absolute_url_update}}">
                         <button type="submit" class="btn btn-primary"> Редактировать</button>
@@ -20,6 +21,7 @@
                         <button type="submit" class="btn btn-danger"> Удалить</button>
                     </a>
                 </td>
+                 {%endif%}
             </tr>
 
             {%endfor%}

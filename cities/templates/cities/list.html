@@ -10,6 +10,7 @@
             {%for object in object_list%}
             <tr>
                 <td><p><a href="{{object.get_absolute_url}}"> {{object.name}}</a></p></td>
+
                 <td>
                     <a href="{{object.get_absolute_url_update}}">
                         <button type="submit" class="btn btn-primary"> Редактировать</button>

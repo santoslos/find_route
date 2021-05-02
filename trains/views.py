@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -42,7 +43,7 @@ class TrainListView(ListView):
     paginate_by = 2
 
 
-class TrainCreateView(SuccessMessageMixin, CreateView):
+class TrainCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Train
     form_class = TrainForm
     template_name = 'trains/create.html'
@@ -50,7 +51,7 @@ class TrainCreateView(SuccessMessageMixin, CreateView):
     success_message = "Город успешно создан"
 
 
-class TrainUpdateView(SuccessMessageMixin, UpdateView):
+class TrainUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Train
     form_class = TrainForm
     template_name = 'trains/update.html'
@@ -59,7 +60,7 @@ class TrainUpdateView(SuccessMessageMixin, UpdateView):
     pk_url_kwarg = 'pk_Train'
 
 
-class TrainDeleteView(DeleteView):
+class TrainDeleteView(LoginRequiredMixin, DeleteView):
     model = Train
     form_class = TrainForm
     template_name = 'trains/delete.html'

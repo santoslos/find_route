@@ -28,7 +28,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item ">
                         <a class="nav-link
                         {% if request.path == cities_home_url %}
@@ -46,8 +46,7 @@
                         	active
                         {% endif %} " href="{% url 'list'%}">Маршуты</a>
                     </li>
-
-
+                    {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link  {% if request.path == cities_create_url or request.path == trains_create_url  %}
                         active
@@ -61,6 +60,26 @@
 
                         </ul>
                     </li>
+                    {%else%}
+                    <li class="nav-item  ">
+                        <a class="nav-link disabled" href="">Добавить</a>
+                     {% endif %}
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                        <a class="nav-link " href="{% url 'accounts:logout'%}">Выйти</a>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'accounts:login'%}">Войти</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link " href="{% url 'accounts:register'%}">Регистрация</a>
+                    </li>
+                    {% endif %}
+
+
+
+
                 </ul>
             </div>
         </div>
