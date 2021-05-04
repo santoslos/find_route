@@ -18,11 +18,14 @@ def home(request):
 
 
 def find_routes(request):
-
-    if request.method == "POST" :
-
-        form = RouteForm(request.POST)
-        request.session['data'] = request.POST
+    data = request.session.get('data') or None
+    if request.method == "POST" or data:
+        if data:
+            form = RouteForm(data)
+            request.session.pop('data')
+        else:
+            form = RouteForm(request.POST)
+            request.session['data'] = request.POST
         if form.is_valid():
             try:
                 context = get_routes(request, form)
