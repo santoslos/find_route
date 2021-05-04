@@ -132,3 +132,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
