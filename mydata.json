@@ -1,0 +1,137 @@
+[
+{
+  "model": "cities.city",
+  "pk": 1,
+  "fields": {
+    "name": "Madrid"
+  }
+},
+{
+  "model": "cities.city",
+  "pk": 5,
+  "fields": {
+    "name": "Dubna"
+  }
+},
+{
+  "model": "cities.city",
+  "pk": 6,
+  "fields": {
+    "name": "Moscow"
+  }
+},
+{
+  "model": "cities.city",
+  "pk": 7,
+  "fields": {
+    "name": "London"
+  }
+},
+{
+  "model": "cities.city",
+  "pk": 9,
+  "fields": {
+    "name": "Amsterdam"
+  }
+},
+{
+  "model": "cities.city",
+  "pk": 10,
+  "fields": {
+    "name": "Berlin"
+  }
+},
+{
+  "model": "cities.city",
+  "pk": 12,
+  "fields": {
+    "name": "Brussel"
+  }
+},
+{
+  "model": "routes.route",
+  "pk": 36,
+  "fields": {
+    "name": "bistriy",
+    "travel_times": 5,
+    "from_city": 1,
+    "to_city": 10,
+    "trains": [
+      5
+    ]
+  }
+},
+{
+  "model": "routes.route",
+  "pk": 38,
+  "fields": {
+    "name": "bistriy1",
+    "travel_times": 5,
+    "from_city": 1,
+    "to_city": 10,
+    "trains": [
+      5
+    ]
+  }
+},
+{
+  "model": "trains.train",
+  "pk": 1,
+  "fields": {
+    "name": "DM",
+    "travel_time": 3,
+    "from_city": 5,
+    "to_city": 6
+  }
+},
+{
+  "model": "trains.train",
+  "pk": 4,
+  "fields": {
+    "name": "AB",
+    "travel_time": 7,
+    "from_city": 9,
+    "to_city": 10
+  }
+},
+{
+  "model": "trains.train",
+  "pk": 5,
+  "fields": {
+    "name": "MB",
+    "travel_time": 5,
+    "from_city": 1,
+    "to_city": 10
+  }
+},
+{
+  "model": "trains.train",
+  "pk": 6,
+  "fields": {
+    "name": "LB",
+    "travel_time": 10,
+    "from_city": 7,
+    "to_city": 10
+  }
+},
+{
+  "model": "trains.train",
+  "pk": 7,
+  "fields": {
+    "name": "BL",
+    "travel_time": 3,
+    "from_city": 12,
+    "to_city": 7
+  }
+},
+{
+  "model": "trains.train",
+  "pk": 8,
+  "fields": {
+    "name": "ML",
+    "travel_time": 25,
+    "from_city": 1,
+    "to_city": 7
+  }
+}
+]
