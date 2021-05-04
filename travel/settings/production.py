@@ -30,7 +30,7 @@ SECRET_KEY = SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://finds-routes.herokuapp.com/']
+ALLOWED_HOSTS = ['finds-routes.herokuapp.com']
 
 # Application definition
 
