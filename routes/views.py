@@ -12,29 +12,24 @@ from routes.models import Route
 from routes.utils import get_routes
 from trains.models import Train
 
+
 def home(request):
     form = RouteForm()
     return render(request, 'routes/home.html', {'form': form})
 
 
 def find_routes(request):
-    data = request.session.get('data') or None
-    if request.method == "POST" or data:
-        if data:
-            form = RouteForm(data)
-            request.session.pop('data')
-        else:
-            form = RouteForm(request.POST)
-            request.session['data'] = request.POST
+    if request.method == "POST":
+        form = RouteForm(request.POST)
         if form.is_valid():
             try:
                 context = get_routes(request, form)
 
             except ValueError as e:
                 messages.error(request, e)
-                return render(request, 'routes/home.html ', {'form': form})
-            return render(request, 'routes/home.html', context)
-        return render(request, 'routes/home.html', {'form': form})
+                return render(request, 'routes/home.html', {'form': form})
+        return render(request, 'routes/home.html', context)
+
     else:
         form = RouteForm()
         messages.error(request, "Нет данных для поиска")
