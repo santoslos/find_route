@@ -9,12 +9,11 @@ from accounts.forms import UserLoginForm, userRegistrationForm
 def login_view(request):
     form = UserLoginForm(request.POST or None)
     _next = request.GET.get('next')
-    print(_next)
     if form.is_valid():
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
         user = authenticate(username=username, password=password)
-        print(type(user))
+
         login(request, user)
         _next = _next or '/'
         return redirect(_next)
@@ -34,11 +33,8 @@ def registration_view(request):
             new_user.set_password(form.cleaned_data['password'])
             new_user.save()
             return render(request, 'accounts/register_done.html', {'new_user': new_user})
-        print(form.errors.as_data())
-        messages.error(request,form.errors)
         return render(request, 'accounts/register.html', {'form': form})
     else:
-
         form = userRegistrationForm()
         print(form.errors)
         return render(request, 'accounts/register.html', {'form': form})
